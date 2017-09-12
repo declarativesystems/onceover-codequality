@@ -81,7 +81,7 @@ $ echo $?
 
 ## FAQ
 
-**`WARN: Unresolved specs during Gem::Specification.reset`**
+**`WARN: Unresolved specs during Gem::Specification.reset`?**
 
 I get these errors when I run `onceover run codequality` but everything seems to work, what gives?:
 
@@ -99,6 +99,11 @@ Beats me - something to do with rubygems.  The best way to beat this message is 
 ```shell
 $ bundle exec onceover run codequality
 ```
+
+**What are you using under-the-hood?**
+
+* [puppet-lint](https://github.com/rodjek/puppet-lint)
+* [puppet-syntax](https://github.com/voxpupuli/puppet-syntax) 
 
 ## Development
 
