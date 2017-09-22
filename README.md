@@ -8,6 +8,8 @@ The plugin checks your control repository for:
 * Linting
 * Syntax
 
+And then generates documentation using [Puppet Strings](https://github.com/puppetlabs/puppet-strings/)
+
 For sure you can hack around with rake/make and hack something up each time but aint nobody got time for that!
 
 ## Installation
@@ -42,6 +44,13 @@ $onceover run codequality --no_lint
 ```shell
 $ onceover run codequality --no_syntax
 ```
+
+**Skip documentation generation**
+
+```shell
+$ onceover run codequality --no_doc
+```
+
 
 ## Sample output
 
@@ -103,7 +112,17 @@ $ bundle exec onceover run codequality
 **What are you using under-the-hood?**
 
 * [puppet-lint](https://github.com/rodjek/puppet-lint)
-* [puppet-syntax](https://github.com/voxpupuli/puppet-syntax) 
+* [puppet-syntax](https://github.com/voxpupuli/puppet-syntax)
+* [puppet-strings](https://github.com/puppetlabs/puppet-strings/) 
+
+
+**My docs change a ton of files every time I run?**
+This is because the timestamp is embedded inside the generated docs by default.  This is fixed in the master branch of Puppet Strings which has not been released as a gem yet.  You can reference the fixed version in your control repository Gemfile, like this:
+
+```ruby
+gem 'puppet-strings',
+  :git => 'https://github.com/puppetlabs/puppet-strings'
+``` 
 
 ## Development
 

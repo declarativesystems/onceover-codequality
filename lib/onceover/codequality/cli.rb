@@ -1,5 +1,6 @@
 require "onceover/codequality/lint"
 require "onceover/codequality/syntax"
+require "onceover/codequality/docs"
 class Onceover
   module CodeQuality
     class CLI
@@ -7,7 +8,7 @@ class Onceover
         def self.command
           @cmd ||= Cri::Command.define do
             name 'codequality'
-            usage 'codequality [--no-lint] [--no-syntax]'
+            usage 'codequality [--no-syntax] [--no-lint] [--no-docs]'
             summary "Code Quality checking for onceover"
             description <<-DESCRIPTION
 Check files in your Control Repository for Lint and Syntax errors
@@ -15,10 +16,12 @@ Check files in your Control Repository for Lint and Syntax errors
           
             option :l, :no_lint, 'Do not check for lint errors', :argument => :optional
             option :x, :no_syntax, 'Do not check for syntax errors', :argument => :optional
+            option :d, :no_docs, 'Do not generate documentation (puppet-strings) for local modules', :argument => :optional
 
             run do |opts, args, cmd|
               no_lint = opts[:no_lint] || false
               no_syntax = opts[:no_syntax] || false
+              no_docs = opts[:no_docs] || false
               status = true
               if ! no_lint
                 logger.info "Checking for lint..."
@@ -33,6 +36,14 @@ Check files in your Control Repository for Lint and Syntax errors
                 if ! Onceover::CodeQuality::Syntax.puppet
                   status = false
                   logger.error "Syntax test failed, see previous errors"
+                end
+              end
+
+              if ! no_docs
+                logger.info "Generating documentation..."
+                if ! Onceover::CodeQuality::Docs.puppet_strings
+                  status = false
+                  logger.error "Documentation generation failed, see previous errors"
                 end
               end
 
