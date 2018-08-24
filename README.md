@@ -116,14 +116,6 @@ $ bundle exec onceover run codequality
 * [puppet-strings](https://github.com/puppetlabs/puppet-strings/) 
 
 
-**My docs change a ton of files every time I run?**
-This is because the timestamp is embedded inside the generated docs by default.  This is fixed in the master branch of Puppet Strings which has not been released as a gem yet.  You can reference the fixed version in your control repository Gemfile, like this:
-
-```ruby
-gem 'puppet-strings',
-  :git => 'https://github.com/puppetlabs/puppet-strings'
-``` 
-
 ## Development
 
 If you have new ideas for things to check this might be a handy place to add them, please open a ticket, otherwise see the [helloworld plugin](https://github.com/declarativesystems/onceover-helloworld) if you want to have a go at writing a plugin of your own.

@@ -5,12 +5,13 @@ class Onceover
     module Docs
       LOCAL_MOD_DIR = "site"
 
-      def self.puppet_strings
+      def self.puppet_strings(html_docs)
         status = true
+        format = html_docs ? "html" : "markdown"
         if Dir.exist?(LOCAL_MOD_DIR)
           Dir.glob("#{LOCAL_MOD_DIR}/*/") { |dir|
             Dir.chdir(dir) {
-              status &= system("puppet strings")
+              status &= system("puppet strings generate --format #{format}")
             }
           }
         end
