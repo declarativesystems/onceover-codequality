@@ -39,10 +39,16 @@ $ onceover run codequality
 $onceover run codequality --no_lint
 ```
 
-**Skip syntax check**
+**Skip Puppet syntax check**
 
 ```shell
 $ onceover run codequality --no_syntax
+```
+
+**Skip Puppetfile syntax check**
+
+```shell
+$ onceover run codequality --no_puppetfile
 ```
 
 **Skip documentation generation**
@@ -114,7 +120,7 @@ $ bundle exec onceover run codequality
 * [puppet-lint](https://github.com/rodjek/puppet-lint)
 * [puppet-syntax](https://github.com/voxpupuli/puppet-syntax)
 * [puppet-strings](https://github.com/puppetlabs/puppet-strings/) 
-
+* [r10k](https://github.com/puppetlabs/r10k/)
 
 ## Development
 
