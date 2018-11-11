@@ -28,6 +28,15 @@ class Onceover
               no_puppetfile = opts[:no_puppetfile] || false
               html_docs = opts[:html_docs] || false
               status = true
+
+              if ! no_syntax
+                logger.info "Checking syntax..."
+                if ! Onceover::CodeQuality::Syntax.puppet
+                  status = false
+                  logger.error "Syntax test failed, see previous errors"
+                end
+              end
+
               if ! no_lint
                 logger.info "Checking for lint..."
                 if ! Onceover::CodeQuality::Lint.puppet
@@ -41,14 +50,6 @@ class Onceover
                 if ! Onceover::CodeQuality::Puppetfile.puppetfile
                   status = false
                   logger.error "puppetfile syntax failed, see previous errors"
-                end
-              end
-
-              if ! no_syntax
-                logger.info "Checking syntax..."
-                if ! Onceover::CodeQuality::Syntax.puppet
-                  status = false
-                  logger.error "Syntax test failed, see previous errors"
                 end
               end
 

@@ -57,6 +57,11 @@ $ onceover run codequality --no_puppetfile
 $ onceover run codequality --no_doc
 ```
 
+**Use custom lint settings**
+Create a file `puppet-lint.rc` in the directory you run `onceover codequality`
+from and it will be automatically used by Puppet Lint. If missing, the built-in
+defaults from `lib/onceover/codequality/lint.rb` will be used. 
+
 
 ## Sample output
 

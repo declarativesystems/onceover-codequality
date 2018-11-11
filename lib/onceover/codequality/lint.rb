@@ -7,14 +7,19 @@ class Onceover
         "manifests",
       ].concat(Dir.glob('site/*').select {|f| File.directory? f})
 
-      LINT_OPTIONS = [
-        "--relative",
-        "--fail-on-warnings",
-        "--no-double_quoted_strings-check",
-        "--no-80chars-check",
-        "--no-variable_scope-check",
-        "--no-quoted_booleans-check",
-      ]
+      # use our default options unless user has created own settings
+      if ! File.exist? ".puppet-lint.rc"
+        LINT_OPTIONS = [
+          "--relative",
+          "--fail-on-warnings",
+          "--no-double_quoted_strings-check",
+          "--no-80chars-check",
+          "--no-variable_scope-check",
+          "--no-quoted_booleans-check",
+        ].freeze
+      else
+        LINT_OPTIONS = [].freeze
+      end
 
       def self.puppet
         status = true
