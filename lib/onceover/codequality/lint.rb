@@ -2,7 +2,7 @@ class Onceover
   module CodeQuality
     module Lint
 
-      # Apply linting to the manifests directory and each module under `site` 
+      # Apply linting to the manifests directory and each module under `site`
       LINT_PATHS = [
         "manifests",
       ].concat(Dir.glob('site/*').select {|f| File.directory? f})
@@ -25,11 +25,9 @@ class Onceover
         status = true
         LINT_PATHS.each { |p|
           if Dir.exists?(p)
-            Dir.chdir(p) do
-              logger.info("checking #{p}")
-              if ! system("puppet-lint #{LINT_OPTIONS.join ' '} . ")
-                status = false
-              end
+            logger.info("checking #{p}")
+            if ! system("puppet-lint #{LINT_OPTIONS.join ' '} #{p}")
+              status = false
             end
           end
         }
