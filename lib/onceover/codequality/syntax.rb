@@ -11,13 +11,13 @@ class Onceover
           logger.warn("No Puppetfile found... continuing")
         end
 
-        # rake task contains an exit statement so run it in a subshell to
-        # capture and continue
-        status &= system(
-"ruby << EOD
-    require 'puppet-syntax/tasks/puppet-syntax'
-    Rake::Task['syntax'].invoke
-EOD")
+        require 'puppet-syntax/tasks/puppet-syntax'
+        begin
+          Rake::Task['syntax'].invoke
+        rescue SystemExit => e
+          logger.error("Invalid syntax")
+          status &= e.status
+        end
         status
       end
     end
