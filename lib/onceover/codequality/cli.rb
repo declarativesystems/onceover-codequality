@@ -29,36 +29,20 @@ class Onceover
               html_docs = opts[:html_docs] || false
               status = true
 
+              if ! no_puppetfile
+                status &= Onceover::CodeQuality::Puppetfile.puppetfile
+              end
+
               if ! no_syntax
-                logger.info "Checking syntax..."
-                if ! Onceover::CodeQuality::Syntax.puppet
-                  status = false
-                  logger.error "Syntax test failed, see previous errors"
-                end
+                status &= Onceover::CodeQuality::Syntax.puppet
               end
 
               if ! no_lint
-                logger.info "Checking for lint..."
-                if ! Onceover::CodeQuality::Lint.puppet
-                  status = false
-                  logger.error "Lint test failed, see previous errors"
-                end
-              end
-
-              if ! no_puppetfile
-                logger.info "Checking Puppetfile"
-                if ! Onceover::CodeQuality::Puppetfile.puppetfile
-                  status = false
-                  logger.error "puppetfile syntax failed, see previous errors"
-                end
+                status &= Onceover::CodeQuality::Lint.puppet
               end
 
               if ! no_docs
-                logger.info "Generating documentation..."
-                if ! Onceover::CodeQuality::Docs.puppet_strings(html_docs)
-                  status = false
-                  logger.error "Documentation generation failed, see previous errors"
-                end
+                status &= Onceover::CodeQuality::Docs.puppet_strings(html_docs)
               end
 
               if status

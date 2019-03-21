@@ -25,10 +25,13 @@ class Onceover
         status = true
         LINT_PATHS.each { |p|
           if Dir.exists?(p)
-            logger.info("checking #{p}")
+            logger.info("checking lint in #{p}...")
             if ! system("puppet-lint #{LINT_OPTIONS.join ' '} #{p}")
               status = false
+            else
+              logger.info("...ok")
             end
+
           end
         }
 

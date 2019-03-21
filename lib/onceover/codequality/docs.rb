@@ -6,12 +6,18 @@ class Onceover
       LOCAL_MOD_DIR = "site"
 
       def self.puppet_strings(html_docs)
+        logger.info "Generating documentation..."
         status = true
         format = html_docs ? "html" : "markdown"
         if Dir.exist?(LOCAL_MOD_DIR)
           Dir.glob("#{LOCAL_MOD_DIR}/*/") { |dir|
             Dir.chdir(dir) {
-              status &= system("puppet strings generate --format #{format}")
+              # puppet strings prints useful metrics so don't swallow its output
+              s = system("puppet strings generate --format #{format}")
+              if ! s
+                logger.error("Error running puppet strings - see previous output")
+              end
+              status &= s
             }
           }
         end

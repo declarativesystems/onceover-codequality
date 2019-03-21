@@ -4,11 +4,20 @@ class Onceover
     module Puppetfile
 
       def self.puppetfile
-        if File.exists? "Puppetfile"
-          status = system("bundle exec r10k puppetfile check")
+        status = true
+        if File.exist?("Puppetfile")
+          logger.info("Checking Puppetfile...")
+          output, s = Open3.capture2e("r10k puppetfile check")
+          ok = s.exitstatus.zero?
+          status &= ok
+
+          if ok
+            logger.info("...ok")
+          else
+            logger.error("Puppetfile validation failed: #{output}")
+          end
         else
-          puts "No Puppetfile found!"
-          status = false
+          logger.warn("No Puppetfile found... continuing")
         end
 
         status
