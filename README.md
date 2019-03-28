@@ -54,7 +54,7 @@ $ onceover run codequality --no_puppetfile
 **Skip documentation generation**
 
 ```shell
-$ onceover run codequality --no_doc
+$ onceover run codequality --no_docs
 ```
 
 **Use custom lint settings**
