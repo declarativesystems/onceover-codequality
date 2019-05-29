@@ -57,7 +57,7 @@ class Onceover
             logger.error("Puppetfile validation failed: #{output}")
           end
         else
-          logger.warn("Please install python and add it to your path for enhanced YAML validation")
+          logger.warn("Please install python and pyyaml for enhanced YAML validation (pip install pyyaml)")
         end
 
         status
