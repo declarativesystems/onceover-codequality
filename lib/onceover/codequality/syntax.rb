@@ -44,7 +44,7 @@ class Onceover
         # file and make it consistent. This is yaml implementation dependent but
         # users would be advised to fix the file, so lets _also_ validate yaml
         # files with python if available on our path...
-        if system("python --version", :err => File::NULL)
+        if system("python --version && python -c 'import yaml'", :err => File::NULL)
           logger.info("Running additional python YAML validation")
           script = File.join(File.dirname(File.expand_path(__FILE__)), "../../../res/validate_yaml.py")
           output, s = Open3.capture2e("python #{script}")

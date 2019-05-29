@@ -17,6 +17,7 @@ try:
           print("YAML syntax error in %s: %s" % (target, str(e)))
 
 except ImportError as e:
+  status = 1
   print("Please install the python-yaml library: pip install pyyaml")
 
 
