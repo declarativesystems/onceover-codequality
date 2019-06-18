@@ -1,0 +1,8 @@
+forge 'https://forge.puppet.com'
+
+# A comment
+mod 'something',
+    :git => 'ssh://git@bitbucket.megacorp.com:7999/puppet/something.git',
+    :tag => '0.3.1'
+
+mod 'puppetlabs-stdlib', '6.0.0'

@@ -6,18 +6,16 @@ class Onceover
       LOCAL_MOD_DIR = "site"
 
       def self.puppet_strings(html_docs)
-        logger.info "Generating documentation..."
         status = true
-        format = html_docs ? "html" : "markdown"
+        format = html_docs ? "--markup html" : "--format markdown"
         if Dir.exist?(LOCAL_MOD_DIR)
           Dir.glob("#{LOCAL_MOD_DIR}/*/") { |dir|
             Dir.chdir(dir) {
+              CodeQuality::Formatter.start_test("Generate documentation in #{dir}")
               # puppet strings prints useful metrics so don't swallow its output
-              s = system("puppet strings generate --format #{format}")
-              if ! s
-                logger.error("Error running puppet strings - see previous output")
-              end
-              status &= s
+              output, ok = CodeQuality::Executor.run("puppet strings generate #{format}")
+              status &= ok
+              CodeQuality::Formatter.end_test(output, ok, true)
             }
           }
         end

@@ -5,7 +5,7 @@ class Onceover
       # Apply linting to the manifests directory and each module under `site`
       LINT_PATHS = [
         "manifests",
-      ].concat(Dir.glob('site/*').select {|f| File.directory? f})
+      ]
 
       # use our default options unless user has created own settings
       if ! File.exist? ".puppet-lint.rc"
@@ -23,15 +23,18 @@ class Onceover
 
       def self.puppet
         status = true
-        LINT_PATHS.each { |p|
-          if Dir.exists?(p)
-            logger.info("checking lint in #{p}...")
-            if ! system("puppet-lint #{LINT_OPTIONS.join ' '} #{p}")
-              status = false
-            else
-              logger.info("...ok")
-            end
 
+        # wait until runtime to scan directories for unit tests
+        lint_paths = LINT_PATHS.concat(
+          Dir.glob('site/*')
+          .select { |f| File.directory? f}
+        )
+        lint_paths.each { |p|
+          if Dir.exists?(p)
+            CodeQuality::Formatter.start_test("lint in #{p}")
+            output, ok = CodeQuality::Executor.run("puppet-lint #{LINT_OPTIONS.join ' '} #{p}")
+            status &= ok
+            CodeQuality::Formatter.end_test(output, ok)
           end
         }
 

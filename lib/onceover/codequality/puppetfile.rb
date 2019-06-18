@@ -6,16 +6,12 @@ class Onceover
       def self.puppetfile
         status = true
         if File.exist?("Puppetfile")
-          logger.info("Checking Puppetfile...")
-          output, s = Open3.capture2e("r10k puppetfile check")
-          ok = s.exitstatus.zero?
+          CodeQuality::Formatter.start_test("Puppetfile")
+          output, ok = CodeQuality::Executor.run("r10k puppetfile check")
+
           status &= ok
 
-          if ok
-            logger.info("...ok")
-          else
-            logger.error("Puppetfile validation failed: #{output}")
-          end
+          CodeQuality::Formatter.end_test(output, ok)
         else
           logger.warn("No Puppetfile found... continuing")
         end

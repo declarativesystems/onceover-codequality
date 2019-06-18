@@ -1,6 +1,7 @@
 /.bundle/
-/.yardoc
-/Gemfile.lock
+**/.yardoc
+**/REFERENCE.md
+/spec/fixtures/**/doc
 /_yardoc/
 /coverage/
 /doc/
@@ -12,3 +13,4 @@
 .rspec_status
 /.idea
 *.gem
+

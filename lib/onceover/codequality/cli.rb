@@ -2,6 +2,8 @@ require "onceover/codequality/lint"
 require "onceover/codequality/syntax"
 require "onceover/codequality/docs"
 require "onceover/codequality/puppetfile"
+require "onceover/codequality/executor"
+require "onceover/codequality/formatter"
 class Onceover
   module CodeQuality
     class CLI
@@ -29,6 +31,8 @@ class Onceover
               html_docs = opts[:html_docs] || false
               status = true
 
+              logger.info "Running Code Quality tests"
+
               if ! no_puppetfile
                 status &= Onceover::CodeQuality::Puppetfile.puppetfile
               end
@@ -46,9 +50,9 @@ class Onceover
               end
 
               if status
-                logger.info "Code Quality tests passed, have a nice day"
+                logger.info "Code Quality tests PASSED, have a nice day"
               else
-                logger.error "Code Quality tests failed, see previous error"
+                logger.error "Code Quality tests FAILED, see previous error(s)"
                 exit 1
               end
             end
