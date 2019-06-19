@@ -2,6 +2,7 @@ require "onceover/codequality/lint"
 require "onceover/codequality/syntax"
 require "onceover/codequality/docs"
 require "onceover/codequality/puppetfile"
+require "onceover/codequality/environment"
 require "onceover/codequality/executor"
 require "onceover/codequality/formatter"
 class Onceover
