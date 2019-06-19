@@ -1,7 +1,7 @@
 /.bundle/
 **/.yardoc
 **/REFERENCE.md
-/spec/fixtures/**/doc
+/spec/testcase/**/doc
 /_yardoc/
 /coverage/
 /doc/

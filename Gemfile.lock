@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onceover-codequality (0.6.0)
+    onceover-codequality (0.7.0)
       onceover (~> 3)
       puppet-lint (~> 2)
       puppet-strings (~> 2)

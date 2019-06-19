@@ -26,11 +26,12 @@ class Onceover
 
         # wait until runtime to scan directories for unit tests
         lint_paths = LINT_PATHS.concat(
-          Dir.glob('site/*')
-          .select { |f| File.directory? f}
+          CodeQuality::Environment.get_site_dirs.each { |site_dir|
+            Dir.glob("#{site_dir}/*").select { |f| File.directory? f}
+          }
         )
         lint_paths.each { |p|
-          if Dir.exists?(p)
+          if Dir.exist?(p)
             CodeQuality::Formatter.start_test("lint in #{p}")
             output, ok = CodeQuality::Executor.run("puppet-lint #{LINT_OPTIONS.join ' '} #{p}")
             status &= ok
