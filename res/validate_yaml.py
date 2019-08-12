@@ -7,9 +7,9 @@ try:
   import yaml
   for root, dirs, files in os.walk("."):
     for f in files:
-      # we want yaml files that are not in hidden (.) dirs. account for / vs \ on windows/linux
+      # we want yaml files that are not in hidden (.) dirs or vendor directory. account for / vs \ on windows/linux
       target = os.path.join(root, f)
-      if target.endswith(".yaml") and not re.match("^\.(/|\\\)\.", target):
+      if target.endswith(".yaml") and not re.match("^\.(/|\\\)(\.|vendor)", target):
         try:
           yaml.safe_load(open(target,"r"))
         except Exception as e:
