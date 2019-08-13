@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onceover-codequality (0.7.0)
+    onceover-codequality (0.7.1)
       onceover (~> 3)
       puppet-lint (~> 2)
       puppet-strings (~> 2)
@@ -16,7 +16,7 @@ GEM
     cri (2.15.6)
     deep_merge (1.2.1)
     diff-lcs (1.3)
-    facter (2.5.1)
+    facter (2.5.5)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.12.2)
@@ -33,7 +33,6 @@ GEM
     hiera (3.5.0)
     hocon (1.2.5)
     httpclient (2.8.3)
-    json (2.2.0)
     little-plugger (1.1.4)
     locale (2.1.2)
     log4r (1.1.10)
@@ -46,14 +45,14 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.13.1)
     multipart-post (2.1.1)
-    onceover (3.13.4)
+    onceover (3.14.1)
       backticks (>= 1.0.2)
       colored (~> 1.2)
       cri (>= 2.6)
       deep_merge (>= 1.0.0)
       git
-      json (>= 1.8.2)
       logging (>= 2.0.0)
+      multi_json (~> 1.10)
       parallel_tests (>= 2.0.0)
       puppet (>= 3.4.0)
       puppetlabs_spec_helper (>= 0.4.0)
@@ -65,12 +64,12 @@ GEM
       table_print (>= 1.0.0)
       versionomy (>= 0.5.0)
     parallel (1.17.0)
-    parallel_tests (2.29.1)
+    parallel_tests (2.29.2)
       parallel
     pathspec (0.2.1)
-    puppet (6.4.2)
+    puppet (6.7.2)
       facter (> 2.0.1, < 4)
-      fast_gettext (~> 1.1.2)
+      fast_gettext (~> 1.1)
       hiera (>= 3.2.1, < 4)
       httpclient (~> 2.8)
       locale (~> 2.1)
@@ -78,12 +77,12 @@ GEM
       puppet-resource_api (~> 1.5)
       semantic_puppet (~> 1.0)
     puppet-lint (2.3.6)
-    puppet-resource_api (1.8.3)
+    puppet-resource_api (1.8.6)
       hocon (>= 1.0)
-    puppet-strings (2.2.0)
+    puppet-strings (2.3.0)
       rgen
       yard (~> 0.9.5)
-    puppet-syntax (2.4.3)
+    puppet-syntax (2.5.0)
       rake
     puppet_forge (2.2.9)
       faraday (>= 0.9.0, < 0.14.0)
@@ -128,7 +127,7 @@ GEM
     text (1.3.1)
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
-    yard (0.9.19)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
