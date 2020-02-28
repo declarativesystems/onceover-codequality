@@ -103,7 +103,7 @@ GEM
       log4r (= 1.1.10)
       multi_json (~> 1.10)
       puppet_forge (~> 2.2.8)
-    rake (10.5.0)
+    rake (13.0.1)
     rgen (0.8.2)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
@@ -135,7 +135,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2.0)
   onceover-codequality!
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
 
 BUNDLED WITH
