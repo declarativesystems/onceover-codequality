@@ -33,7 +33,7 @@ GEM
       fast_gettext (~> 1.1.0)
       gettext (>= 3.0.2, < 3.3.0)
       locale
-    git (1.8.1)
+    git (1.11.0)
       rchardet (~> 1.8)
     hiera (3.6.0)
     hocon (1.3.1)
