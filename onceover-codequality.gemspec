@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'onceover', '~> 3'
   spec.add_runtime_dependency 'puppet-syntax', '~> 3'
   spec.add_runtime_dependency 'puppet-lint', '~> 3'
-  spec.add_runtime_dependency 'puppet-strings', '~> 3'
+  spec.add_runtime_dependency 'puppet-strings', '~> 4'
 end
