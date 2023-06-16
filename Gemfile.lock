@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onceover-codequality (0.8.0)
+    onceover-codequality (0.10.0)
       onceover (~> 3)
       puppet-lint (~> 4)
       puppet-strings (~> 4)
@@ -184,10 +184,10 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 2.0)
+  bundler (~> 2.4)
   onceover-codequality!
   rake (~> 13.0)
-  rspec (~> 3.0)
+  rspec (~> 3.12)
 
 BUNDLED WITH
    2.4.6
