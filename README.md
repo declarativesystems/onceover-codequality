@@ -99,26 +99,6 @@ $ echo $?
 1
 ```
 
-## Developing
-
-### How to run tests
-
-```shell
-bundle exec rake spec
-```
-
-### How to build gem
-
-```shell
-gem build onceover-codequality.gemspec
-```
-
-### How to upload to rubygems.org
-
-```shell
-gem push XXX.gem
-```
-
 ## FAQ
 
 **`WARN: Unresolved specs during Gem::Specification.reset`?**
@@ -149,8 +129,29 @@ $ bundle exec onceover run codequality
 
 ## Development
 
-If you have new ideas for things to check this might be a handy place to add them, please open a ticket, otherwise see the [helloworld plugin](https://github.com/declarativesystems/onceover-helloworld) if you want to have a go at writing a plugin of your own.
+### Writing your own onceover plugins
+
+Have a look at [helloworld plugin](https://github.com/declarativesystems/onceover-helloworld) if you want to have a go at writing a plugin of your own.
+
+### How to run tests
+
+```shell
+bundle exec rake spec
+```
+
+### How to build gem
+
+```shell
+gem build onceover-codequality.gemspec
+```
+
+### How to upload to rubygems.org
+
+```shell
+gem push XXX.gem
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/declarativesystems/onceover-codequality.
+* [This project is looking for a maintainer](https://github.com/declarativesystems/onceover-codequality/issues/21)
+* Bug reports and pull requests welcome
