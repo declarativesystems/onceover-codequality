@@ -99,6 +99,26 @@ $ echo $?
 1
 ```
 
+## Developing
+
+### How to run tests
+
+```shell
+bundle exec rake spec
+```
+
+### How to build gem
+
+```shell
+gem build onceover-codequality.gemspec
+```
+
+### How to upload to rubygems.org
+
+```shell
+gem push XXX.gem
+```
+
 ## FAQ
 
 **`WARN: Unresolved specs during Gem::Specification.reset`?**
