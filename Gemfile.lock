@@ -3,9 +3,9 @@ PATH
   specs:
     onceover-codequality (0.11.0)
       onceover (~> 3)
+      puppet-lint (~> 4)
       puppet-strings (~> 4)
       puppet-syntax (~> 3)
-      puppetlabs-puppet-lint (~> 5)
 
 GEM
   remote: https://rubygems.org/
@@ -126,7 +126,6 @@ GEM
       faraday_middleware (~> 1.0)
       minitar
       semantic_puppet (~> 1.0)
-    puppetlabs-puppet-lint (5.0.0)
     puppetlabs_spec_helper (6.0.1)
       mocha (~> 1.0)
       pathspec (>= 0.2, < 2.0.0)
@@ -179,7 +178,7 @@ GEM
     unicode-display_width (2.4.2)
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
-    yard (0.9.34)
+    yard (0.9.36)
 
 PLATFORMS
   x86_64-linux
