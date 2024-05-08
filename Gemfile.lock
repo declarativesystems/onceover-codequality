@@ -178,7 +178,7 @@ GEM
     unicode-display_width (2.4.2)
     versionomy (0.5.0)
       blockenspiel (~> 0.5)
-    yard (0.9.34)
+    yard (0.9.36)
 
 PLATFORMS
   x86_64-linux
