@@ -1,8 +1,6 @@
-
 class Onceover
   module CodeQuality
     module Syntax
-
       def self.puppet
         status = true
 
@@ -19,7 +17,7 @@ class Onceover
           PuppetSyntax.exclude_paths = ['vendor/**/*','spec/templates/*.erb']
           Rake::Task['syntax'].invoke
         RUBY_CODE
-        #output, s = Open3.capture2e("ruby", "-e", inline_ruby)
+        # output, s = Open3.capture2e("ruby", "-e", inline_ruby)
         output, ok = CodeQuality::Executor.run("ruby", "-e", inline_ruby)
         status &= ok
         CodeQuality::Formatter.end_test(output, ok)
@@ -54,4 +52,3 @@ class Onceover
     end
   end
 end
-
