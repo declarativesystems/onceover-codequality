@@ -1,14 +1,13 @@
 class Onceover
   module CodeQuality
     module Lint
-
       # Apply linting to the manifests directory and each module under `site`
       LINT_PATHS = [
         "manifests",
       ]
 
       # use our default options unless user has created own settings
-      if ! File.exist? ".puppet-lint.rc"
+      if !File.exist? ".puppet-lint.rc"
         LINT_OPTIONS = [
           "--relative",
           "--fail-on-warnings",
@@ -27,7 +26,7 @@ class Onceover
         # wait until runtime to scan directories for unit tests
         lint_paths = LINT_PATHS.concat(
           CodeQuality::Environment.get_site_dirs.each { |site_dir|
-            Dir.glob("#{site_dir}/*").select { |f| File.directory? f}
+            Dir.glob("#{site_dir}/*").select { |f| File.directory? f }
           }
         )
         lint_paths.each { |p|

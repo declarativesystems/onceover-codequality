@@ -36,15 +36,12 @@ RSpec.describe Onceover::CodeQuality::Environment do
   end
 
   it "raises on missing environment.conf" do
-    expect{Onceover::CodeQuality::Environment.get_site_dirs()}.to raise_error /Missing environment/
+    expect { Onceover::CodeQuality::Environment.get_site_dirs() }.to raise_error /Missing environment/
   end
 
   it "raises on malformed environment.conf" do
     Dir.chdir "spec/testcase/environment/malformed" do
-      expect{Onceover::CodeQuality::Environment.get_site_dirs()}.to raise_error /Malformed environment/
+      expect { Onceover::CodeQuality::Environment.get_site_dirs() }.to raise_error /Malformed environment/
     end
   end
-
-
-
 end

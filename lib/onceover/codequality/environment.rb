@@ -1,7 +1,6 @@
 class Onceover
   module CodeQuality
     module Environment
-
       ENVIRONMENT_CONF = "environment.conf"
 
       # Latest best practice is to change the name of `site` to be
@@ -9,7 +8,7 @@ class Onceover
       # to extract this...
       def self.get_site_dirs()
         if File.exist?(ENVIRONMENT_CONF)
-          #modulepath = site-modules:modules:$basemodulepath
+          # modulepath = site-modules:modules:$basemodulepath
           modulepath = open(ENVIRONMENT_CONF) { |f| f.each_line.find { |line| line.include?("modulepath") } }
 
           begin
@@ -17,8 +16,8 @@ class Onceover
               # reject any elements containing interpolation or referencing modules
               # loaded by r10k
               e =~ /\$/ || e == "modules" || e =~ /[\\.\/]/
-            }.map {
-              |e| e.strip
+            }.map { |e|
+              e.strip
             }
           rescue NoMethodError => e
             raise "Malformed environment configuration: #{ENVIRONMENT_CONF}"

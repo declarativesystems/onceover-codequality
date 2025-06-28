@@ -2,7 +2,6 @@
 class Onceover
   module CodeQuality
     module Puppetfile
-
       def self.puppetfile
         status = true
         if File.exist?("Puppetfile")
@@ -18,9 +17,6 @@ class Onceover
 
         status
       end
-
     end
   end
 end
-
-

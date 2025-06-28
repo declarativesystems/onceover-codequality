@@ -5,5 +5,3 @@ class Onceover
   module CodeQuality
   end
 end
-
-

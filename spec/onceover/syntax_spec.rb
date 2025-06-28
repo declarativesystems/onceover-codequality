@@ -4,11 +4,9 @@ require "onceover/codequality"
 require "onceover/codequality/syntax"
 require "logging"
 
-
 RSpec.describe Onceover::CodeQuality::Syntax do
   it "Detects syntax errors" do
     Dir.chdir "spec/testcase/bad_syntax" do
-
       # capture logger output to check debug messages are output on failure
       capture_stringio = StringIO.new
       $logger = Logging.logger(capture_stringio)

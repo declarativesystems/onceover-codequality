@@ -3,7 +3,6 @@
 class Onceover
   module CodeQuality
     module Docs
-
       def self.puppet_strings(html_docs)
         status = true
         format = html_docs ? "--markup html" : "--format markdown"
@@ -24,7 +23,6 @@ class Onceover
 
         status
       end
-
     end
   end
 end
